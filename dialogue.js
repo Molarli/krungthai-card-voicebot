@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  const card = {
+    lastFour: "4821",
+    expiry: "08/29",
+    label: { th: "บัตรเดบิตตัวอย่าง", en: "Sample debit card" }
+  };
+
   const scenarios = [
     {
       id: "card",
@@ -40,19 +46,17 @@
       balance: "บัญชีเงินฝากตัวอย่างมียอดเงินที่ใช้ได้ 12,450 บาทค่ะ ยอดนี้เป็นข้อมูลสมมติสำหรับการสาธิต",
       transfer: "รายการโอนตัวอย่างจำนวน 850 บาทมีสถานะสำเร็จค่ะ รหัสอ้างอิงของรายการสมมติคือ DEMO-TF-A",
       handoff: "การส่งต่อให้เจ้าหน้าที่ในระบบจำลองสำเร็จค่ะ ในระบบจริง เจ้าหน้าที่จะได้รับหัวข้อที่ต้องการความช่วยเหลือเพื่อรับช่วงต่อ",
-      verify: "ก่อนอายัดบัตร กรุณาเลือกวิธียืนยันตัวตนแบบจำลองค่ะ เลือกใช้ PIN ตัวอย่างที่ระบบเตรียมไว้ หรือจำลองการยืนยันด้วยเสียง โดยไม่ต้องบอกรหัสหรือใช้ข้อมูลจริง",
-      verifiedPin: "ยืนยันตัวตนด้วย PIN ตัวอย่างสำเร็จค่ะ",
-      verifiedVoice: "จำลองการยืนยันตัวตนด้วยเสียงสำเร็จค่ะ",
+      verify: "กรุณาอนุมัติการยืนยันตัวตนในแอปธนาคารจำลองบนหน้าจอนี้ค่ะ ขั้นตอนนี้ใช้ข้อมูลสมมติ",
+      verified: "ยืนยันตัวตนผ่านแอปธนาคารจำลองสำเร็จค่ะ",
       verificationFailed: "การยืนยันตัวตนจำลองไม่สำเร็จค่ะ ฉันส่งต่อเรื่องให้เจ้าหน้าที่จำลองแล้ว เลขที่เรื่อง DEMO-CARD-A บัตรตัวอย่างยังไม่ได้ถูกอายัด และยังไม่มีคำขอออกบัตรใหม่",
-      block: "ต้องการยืนยันการอายัดบัตรเดบิตตัวอย่างไหมคะ",
+      block: "ตรวจสอบข้อมูลบัตรเดบิตตัวอย่างบนหน้าจอ แล้วกดปุ่มยืนยันการอายัดเพื่อดำเนินการค่ะ",
       replacement: "อายัดบัตรเดบิตตัวอย่างสำเร็จค่ะ ต้องการขอออกบัตรใหม่ในระบบจำลองไหมคะ",
       delivery: "ยืนยันให้จัดส่งบัตรใหม่ไปยังที่อยู่ลงทะเบียนตัวอย่างได้เลยค่ะ ระบบใช้ที่อยู่สมมติที่เตรียมไว้ จึงไม่ต้องระบุที่อยู่ของคุณ",
       cardDone: "บัตรเดบิตตัวอย่างถูกอายัดแล้วค่ะ ระบบจำลองได้บันทึกคำขอออกบัตรใหม่และจัดส่งไปยังที่อยู่ลงทะเบียนตัวอย่างแล้ว",
       cardOnly: "บัตรเดบิตตัวอย่างถูกอายัดแล้วค่ะ ไม่มีคำขอออกบัตรใหม่ในรอบนี้",
       cardAlready: "บัตรเดบิตตัวอย่างถูกอายัดในระบบจำลองแล้วค่ะ",
       cardCancel: "ยกเลิกขั้นตอนก่อนอายัดบัตรตัวอย่างแล้วค่ะ",
-      demoPin: "ใช้ PIN ตัวอย่าง",
-      demoVoice: "จำลองยืนยันด้วยเสียง",
+      demoVerify: "อนุมัติในแอปจำลอง",
       demoFailure: "จำลองยืนยันไม่สำเร็จ",
       confirm: "ยืนยันการอายัด",
       order: "ขอออกบัตรใหม่",
@@ -67,19 +71,17 @@
       balance: "The sample savings account has an available balance of 12,450 baht. This amount is fictional.",
       transfer: "The sample transfer of 850 baht shows as completed. The fictional reference is DEMO-TF-A.",
       handoff: "The simulated handoff is complete. In a live service, a support agent would receive the topic and take over the conversation.",
-      verify: "First, choose a simulated way to verify your identity. You can use the preset demo PIN or simulate voice verification. Both options use fictional information.",
-      verifiedPin: "Identity verification passed with the preset demo PIN.",
-      verifiedVoice: "Simulated voice verification passed.",
+      verify: "Please approve the identity verification request in the simulated banking app on your screen. This step uses fictional information.",
+      verified: "Identity verification passed in the simulated banking app.",
       verificationFailed: "Simulated identity verification failed. I recorded a handoff to a demo agent under case DEMO-CARD-A. The sample card is still active and no replacement was ordered.",
-      block: "Would you like to confirm blocking the sample debit card?",
+      block: "Review the sample debit card on your screen, then select Confirm block to proceed.",
       replacement: "The sample debit card is blocked. Would you like to order a replacement in this simulation?",
       delivery: "Please confirm delivery to the preset fictional address on file. The demo already has the address.",
       cardDone: "The sample debit card is blocked. The simulation recorded a replacement order for delivery to the fictional address on file.",
       cardOnly: "The sample debit card is blocked. No replacement was ordered in this session.",
       cardAlready: "The sample debit card is already blocked in this simulation.",
       cardCancel: "The session was canceled before the sample debit card was blocked.",
-      demoPin: "Use demo PIN",
-      demoVoice: "Simulate voice verification",
+      demoVerify: "Approve in demo app",
       demoFailure: "Simulate failed verification",
       confirm: "Confirm block",
       order: "Order replacement",
@@ -98,12 +100,9 @@
 
   const cancellation = /^(?:please\s+)?(?:no\b|nope\b|cancel\b|stop\b|skip\b|don['’]?t\b|do not\b|never\s?mind\b|ยกเลิก|ข้าม|ไม่(?:เอา|ค่ะ|ครับ|ต้อง|ยืนยัน|อายัด|ใช่|ก่อน|แล้ว|\s|$)|หยุด)/i;
   const affirmation = /^(?:(?:yes|yep|confirm|okay|ok|go ahead)(?:[\s,]+please)?|(?:ยืนยัน|ตกลง|ใช่|ได้เลย)\s*(?:ค่ะ|ครับ|นะคะ)?)[.!\s]*$/i;
-  const blockApproval = /^(?:(?:yes[, ]+)?(?:confirm (?:the )?block|(?:please )?block (?:it|(?:the|my) (?:debit )?card))|(?:ยืนยัน(?:การ)?อายัด(?:บัตร)?|อายัด(?:บัตร)?เลย|อายัดบัตร)\s*(?:ค่ะ|ครับ|นะคะ)?)[.!\s]*$/i;
   const deliveryApproval = /^(?:confirm (?:the )?delivery|ยืนยัน(?:การ)?จัดส่ง\s*(?:ค่ะ|ครับ|นะคะ)?)[.!\s]*$/i;
   const replacementApproval = /ขอ(?:ออก)?บัตร(?:ใบ)?ใหม่|ออกบัตร(?:ใบ)?ใหม่|\b(?:order|issue|send|get)\b.*\b(?:replacement|new (?:card|one))\b/i;
   const verificationFailure = /ยืนยัน(?:ตัวตน)?ไม่สำเร็จ|ยืนยัน(?:ตัวตน)?ไม่ผ่าน|\b(?:failed verification|verification failed|fail verification)\b/i;
-  const pinVerification = /^(?:(?:please )?(?:use )?(?:(?:the )?(?:preset )?demo )?pin|(?:ขอ)?ใช้\s*pin\s*ตัวอย่าง\s*(?:ค่ะ|ครับ|นะคะ)?)[.!\s]*$/i;
-  const voiceVerification = /ยืนยัน(?:ตัวตน)?ด้วยเสียง|ใช้เสียง|\b(?:voice verification|verify by voice|use (?:my )?voice)\b/i;
   const greeting = /^(?:สวัสดี|หวัดดี|hello\b|hi\b|hey\b)/i;
   const spokenEnglishDigits = /\b(?:zero|one|two|three|four|five|six|seven|eight|nine)(?:[\s,.-]+(?:zero|one|two|three|four|five|six|seven|eight|nine)){3,}\b/i;
   const spokenThaiDigits = /(?:ศูนย์|หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)(?:[\s,.-]*(?:ศูนย์|หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)){3,}/;
@@ -136,12 +135,14 @@
 
   function cardActions(words, step) {
     const choices = {
-      verify: [words.demoPin, words.demoVoice, words.demoFailure, words.cancel],
-      block: [words.confirm, words.cancel],
-      replacement: [words.order, words.skip],
-      delivery: [words.confirmDelivery, words.cancel]
+      verify: [[words.demoVerify, "confirm-verify"], [words.demoFailure], [words.cancel]],
+      block: [[words.confirm, "confirm-block"], [words.cancel]],
+      replacement: [[words.order], [words.skip]],
+      delivery: [[words.confirmDelivery], [words.cancel]]
     };
-    return (choices[step] ?? []).map((text) => ({ label: text, text }));
+    return (choices[step] ?? []).map(([text, action]) => (
+      action ? { label: text, text, action } : { label: text, text }
+    ));
   }
 
   function create() {
@@ -165,7 +166,7 @@
       return result(text, "card", status, [], step, outcome);
     }
 
-    function continueCard(message, words) {
+    function continueCard(message, words, action) {
       if (cancellation.test(message)) {
         return cardBlocked
           ? finishCard(words.cardOnly, "done", "card_blocked")
@@ -177,15 +178,12 @@
           if (verificationFailure.test(message)) {
             return finishCard(words.verificationFailed, "escalated", "verification_failed", "handoff");
           }
-          if (pinVerification.test(message)) {
-            return askCard(words, "block", `${words.verifiedPin} ${words.block}`);
-          }
-          if (voiceVerification.test(message)) {
-            return askCard(words, "block", `${words.verifiedVoice} ${words.block}`);
+          if (action === "confirm-verify") {
+            return askCard(words, "block", `${words.verified} ${words.block}`);
           }
           return askCard(words, "verify", words.verify);
         case "block":
-          if (affirmation.test(message) || blockApproval.test(message)) {
+          if (action === "confirm-block") {
             cardBlocked = true;
             return askCard(words, "replacement", words.replacement);
           }
@@ -204,7 +202,7 @@
       }
     }
 
-    function reply(input, lang) {
+    function reply(input, lang, { action } = {}) {
       const language = languageKey(lang);
       const words = copy[language];
       const message = String(input ?? "").normalize("NFC").trim();
@@ -215,7 +213,7 @@
       const matchedIntent = intents.find(([, pattern]) => pattern.test(message))?.[0];
       const intent = matchedIntent ?? (replacementApproval.test(message) ? "card" : null);
       if (cardStep && (!intent || intent === "card" || cancellation.test(message))) {
-        return continueCard(message, words);
+        return continueCard(message, words, action);
       }
 
       if (intent) cardStep = null;
@@ -241,5 +239,5 @@
     return { reset, reply };
   }
 
-  window.KTBDialogue = { scenarios, create, welcome, isSensitive };
+  window.KTBDialogue = { card, scenarios, create, welcome, isSensitive };
 })();
