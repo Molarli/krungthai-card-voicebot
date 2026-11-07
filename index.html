@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071e35">
+  <meta name="description" content="A classroom prototype for a Krungthai voice banking assistant.">
+  <title>Krungthai Voice Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="dialogue.js" defer></script>
+  <script src="voice.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12h3l2.5-6 3.5 12 3-14 3.5 11 2-3H22"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11v1a7 7 0 0 0 14 0v-1m-7 8v3m-3 0h6"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 10h18M6 15h4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M21 10h-6a2 2 0 0 0 0 4h6m-6.5-2h.5"/></symbol>
+    <symbol id="i-transfer" viewBox="0 0 24 24"><path d="M3 7h17m-4-4 4 4-4 4m5 6H4m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 13v-2a9 9 0 0 1 18 0v5a5 5 0 0 1-5 5h-4"/><rect x="3" y="11" width="5" height="7" rx="2"/><rect x="16" y="11" width="5" height="7" rx="2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m3 4 18 8-18 8 3-8-3-8Zm3 8h15"/></symbol>
+    <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zm12 0a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zm13 1 4 4m0-4-4 4"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 7m-2-7V5m0 6h6"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+  <header class="top">
+    <div class="frame top-inner">
+      <div class="brand"><span class="brand-mark"><svg><use href="#i-wave"/></svg></span><span><strong>Krungthai</strong><small>VOICE LAB</small></span></div>
+      <div class="header-actions">
+        <span class="prototype"><i></i><span data-copy="prototype">ต้นแบบโครงงาน</span></span>
+        <div class="language" role="group" data-label="language">
+          <button type="button" data-lang="th" aria-pressed="true" lang="th">ไทย</button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="frame">
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy">
+        <p class="eyebrow"><i></i> KRUNGTHAI / VOICE BANKING</p>
+        <h1 id="title" data-copy="title">แจ้งบัตรหาย<br>ด้วยเสียง</h1>
+        <p class="hero-description" data-copy="subtitle">ทดลองคุยกับผู้ช่วยเสียงกรุงไทย ตั้งแต่แจ้งบัตรหายจนถึงจำลองการระงับบัตร</p>
+        <button type="button" class="hero-action" id="try-demo"><span data-copy="tryDemo">เริ่มทดลอง</span><svg><use href="#i-arrow"/></svg></button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 300" class="orbit" fill="none">
+          <defs>
+            <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox"><stop stop-color="#32defe" stop-opacity="0"/><stop offset=".5" stop-color="#8bf5ff"/><stop offset="1" stop-color="#32defe" stop-opacity="0"/></linearGradient>
+            <radialGradient id="disc"><stop stop-color="#00688e"/><stop offset="1" stop-color="#073759"/></radialGradient>
+          </defs>
+          <g transform="translate(269 146)">
+            <circle r="136" stroke="#9bdbfc" opacity=".10"/><circle r="110" stroke="#9bdbfc" opacity=".19" stroke-dasharray="2 6"/>
+            <circle r="88" stroke="#61d8ff" opacity=".26"/><circle r="69" stroke="#61d8ff" opacity=".34"/>
+            <circle r="49" fill="url(#disc)" stroke="#65e7ff" stroke-width="1.4"/>
+            <circle cx="-92" cy="-61" r="3" fill="#69e9ff"/><circle cx="88" cy="1" r="3" fill="#69e9ff"/>
+            <circle cx="103" cy="89" r="2" fill="#69e9ff" opacity=".6"/>
+          </g>
+          <path d="M6 146h40l8-10 8 21 12-32 11 41 11-27 10 12h14l9-19 9 39 10-51 10 56 9-45 9 24 10-9h30m105 0h21l8-11 8 22 10-34 10 43 9-59 9 69 10-55 10 36 9-17h23l8-10 9 18 8-10h49" stroke="url(#signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <g stroke="#a9f7ff" stroke-width="2" stroke-linecap="round" transform="translate(252 128) scale(1.5)"><use href="#i-mic" width="24" height="24"/></g>
+          <g fill="#7bb4cc" font-family="monospace" font-size="8" letter-spacing="2"><text x="27" y="256">TH / EN</text><text x="375" y="256">VOICE SIGNAL</text></g>
+          <g stroke="#64c4e7" opacity=".3"><path d="M27 241h77m271 0h101M55 47h43m-22-22v44m348-22h43m-22-22v44"/></g>
+        </svg>
+      </div>
+    </section>
+    <div class="workbench">
+      <aside class="sidebar" aria-labelledby="scenarios-title">
+        <div class="section-kicker"><span>01</span><p data-copy="scenarioKicker">สถานการณ์จำลอง</p></div>
+        <h2 id="scenarios-title" data-copy="scenarios">เลือกเรื่องที่จะคุย</h2>
+        <div class="scenarios" id="scenario-list"></div>
+        <section class="journey" aria-labelledby="journey-title">
+          <div class="section-kicker"><span>02</span><p data-copy="journeyKicker">ติดตามสถานะ</p></div>
+          <h2 id="journey-title" data-copy="journeyTitle">ขั้นตอนระงับบัตร</h2>
+          <ol id="journey-steps"></ol>
+          <div id="outcome" class="outcome" role="status" hidden></div>
+        </section>
+        <div class="safety"><svg><use href="#i-lock"/></svg><p><strong data-copy="safeTitle">ข้อมูลสมมติสำหรับเดโม</strong><span data-copy="safeBody">กรุณาอย่าป้อนรหัส PIN, OTP หรือข้อมูลบัญชีจริง</span></p></div>
+      </aside>
+      <section class="console" id="conversation" aria-labelledby="console-title">
+        <header class="console-head">
+          <div class="console-name">
+            <span class="assistant-mark"><svg><use href="#i-wave"/></svg></span>
+            <div><h2 id="console-title">Krungthai Voice Bot</h2><span class="state" id="voice-state" data-state="idle" role="status"></span></div>
+          </div>
+          <div class="console-actions">
+            <button type="button" id="audio" class="icon-button" aria-pressed="true" data-label="audio"><svg><use href="#i-volume"/></svg></button>
+            <button type="button" id="reset" class="icon-button" data-label="reset"><svg><use href="#i-reset"/></svg></button>
+          </div>
+        </header>
+        <div class="transcript" id="transcript" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" data-label="transcript"></div>
+        <div class="console-bottom">
+          <div class="quick-replies" id="quick-replies" hidden></div>
+          <p class="notice" id="notice" role="status" hidden></p>
+          <form class="composer" id="composer">
+            <button type="button" class="mic-button" id="mic" data-label="mic"><svg><use href="#i-mic"/></svg></button>
+            <input id="message" type="text" maxlength="240" autocomplete="off" spellcheck="false" data-label="message">
+            <button type="submit" class="send-button" data-label="send"><svg><use href="#i-send"/></svg></button>
+          </form>
+          <p class="voice-note" data-copy="voiceNote">การแปลงเสียงอาจใช้บริการของเบราว์เซอร์</p>
+        </div>
+      </section>
+    </div>
+    <footer class="footer"><span>KRUNGTHAI VOICE LAB</span><span data-copy="footer">ต้นแบบเพื่อการศึกษา · ทุกธุรกรรมเป็นการจำลอง</span></footer>
+  </main>
+</body>
+</html>
