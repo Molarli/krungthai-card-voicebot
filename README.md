@@ -5,8 +5,8 @@ Krungthai Card VoiceBot is an independent demo of a Thai and English voice assis
 ## Try the lost-card demo
 
 1. Choose Thai or English and select **Try the demo**. To use the microphone, say “I lost my card. Please block it and issue a new one.”
-2. Select **Use demo PIN** or **Simulate voice verification**.
-3. Confirm the card block, order a replacement, and confirm delivery.
+2. Select **Approve in demo app**.
+3. Review the sample debit card ending in **4821** and the effect of blocking it. Tap **Confirm block** on screen, then choose whether to order a replacement and confirm delivery. A spoken or typed reply cannot block the card.
 4. To see the agent handoff, start a new conversation and select **Simulate failed verification**. The sample card stays active and the demo displays a mock case number.
 
 ## Run locally
