@@ -1,14 +1,14 @@
 (() => {
   const copy = {
     th: {
-      prototype: 'ต้นแบบโครงงาน', language: 'ภาษาของเดโม',
+      prototype: 'เดโมจำลอง', language: 'ภาษาของเดโม',
       title: ['แจ้งบัตรหาย', 'ด้วยเสียง'],
-      subtitle: 'ทดลองคุยกับผู้ช่วยเสียงกรุงไทย ตั้งแต่แจ้งบัตรเดบิตหายจนถึงจำลองการอายัดและออกบัตรใหม่',
+      subtitle: 'ทดลองแจ้งบัตรเดบิตหายผ่านผู้ช่วยเสียง ตั้งแต่การอายัดบัตรไปจนถึงการขอออกบัตรใหม่ในระบบจำลอง',
       tryDemo: 'เริ่มทดลอง', scenarioKicker: 'สถานการณ์จำลอง', scenarios: 'เลือกเรื่องที่จะคุย',
       journeyKicker: 'ติดตามสถานะ', journeyTitle: 'ขั้นตอนอายัดบัตร',
       safeTitle: 'ข้อมูลสมมติสำหรับเดโม', safeBody: 'กรุณาอย่าป้อนรหัส PIN, OTP หรือข้อมูลบัญชีจริง',
       voiceNote: 'การแปลงเสียงอาจใช้บริการของเบราว์เซอร์',
-      footer: 'ต้นแบบเพื่อการศึกษา · ทุกธุรกรรมเป็นการจำลอง',
+      footer: 'เดโมอิสระ · การทำรายการทั้งหมดเป็นการจำลอง',
       audio: 'เสียงตอบกลับอัตโนมัติ', reset: 'เริ่มบทสนทนาใหม่',
       transcript: 'บทสนทนา', mic: 'เริ่มพูด', stopMic: 'หยุดฟัง', send: 'ส่งข้อความ', message: 'พิมพ์ข้อความ',
       placeholder: 'พิมพ์ข้อความ หรือกดไมค์เพื่อพูด…', noMicPlaceholder: 'พิมพ์ข้อความที่นี่…',
@@ -26,14 +26,14 @@
       verification_failed: 'ผลจำลอง · ส่งต่อเจ้าหน้าที่โดยยังไม่ได้อายัดบัตร'
     },
     en: {
-      prototype: 'Classroom prototype', language: 'Demo language',
+      prototype: 'Simulation', language: 'Demo language',
       title: ['Lost your card?', 'Just say it.'],
-      subtitle: 'Try the Krungthai voice assistant for a lost debit card, from reporting it to blocking it and ordering a replacement.',
+      subtitle: 'Try reporting a lost debit card, blocking it, and requesting a replacement with a simulated voice assistant.',
       tryDemo: 'Try the demo', scenarioKicker: 'DEMO SCENARIOS', scenarios: 'Choose a scenario',
       journeyKicker: 'JOURNEY TRACKER', journeyTitle: 'Card blocking steps',
       safeTitle: 'Fictional demo data', safeBody: 'Keep real PINs, OTPs, and account details out of the demo.',
       voiceNote: 'Voice recognition may use your browser’s speech service.',
-      footer: 'Classroom prototype · All banking actions are simulated',
+      footer: 'Independent demo · All banking actions are simulated',
       audio: 'Spoken replies', reset: 'Start a new conversation',
       transcript: 'Conversation transcript', mic: 'Start listening', stopMic: 'Stop listening', send: 'Send message', message: 'Type a message',
       placeholder: 'Type a message, or tap the mic to speak…', noMicPlaceholder: 'Type a message…',

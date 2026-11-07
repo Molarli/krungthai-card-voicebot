@@ -34,7 +34,7 @@
 
   const copy = {
     th: {
-      welcome: "สวัสดีค่ะ ฉันคือผู้ช่วยเสียงในโปรเจกต์จำลองกรุงไทย ลองพูดหรือพิมพ์เรื่องที่ต้องการ หรือเลือกสถานการณ์ตัวอย่างได้เลยค่ะ",
+      welcome: "สวัสดีค่ะ ยินดีต้อนรับสู่ Krungthai Card VoiceBot เดโมจำลองสำหรับแจ้งบัตรเดบิตหาย ลองพูด พิมพ์ หรือเลือกสถานการณ์ตัวอย่างได้เลยค่ะ",
       protected: "ฉันซ่อนข้อความนี้เพราะอาจมีข้อมูลส่วนตัวค่ะ กรุณาใช้ข้อมูลสมมติ และอย่าพิมพ์หรือพูดรหัสผ่าน PIN OTP หรือหมายเลขบัญชีจริงนะคะ",
       fallback: "ฉันยังจับใจความไม่ได้ค่ะ ลองบอกว่า บัตรหาย ตรวจสอบยอดเงิน ติดตามการโอนเงิน หรือติดต่อเจ้าหน้าที่ได้เลยค่ะ",
       balance: "บัญชีเงินฝากตัวอย่างมียอดเงินที่ใช้ได้ 12,450 บาทค่ะ ยอดนี้เป็นข้อมูลสมมติสำหรับการสาธิต",
@@ -61,7 +61,7 @@
       cancel: "ยกเลิก"
     },
     en: {
-      welcome: "Hi, I’m the voice assistant in this Krungthai classroom prototype. Speak or type your request, or choose a sample scenario.",
+      welcome: "Welcome to the Krungthai Card VoiceBot simulation. Speak or type your request, or choose a sample scenario.",
       protected: "I hid that message because it may contain personal information. Please use fictional data and keep real passwords, PINs, OTPs, and account numbers out of the demo.",
       fallback: "I didn’t catch that. Try reporting a lost card, checking a balance, tracking a transfer, or asking for a support agent.",
       balance: "The sample savings account has an available balance of 12,450 baht. This amount is fictional.",

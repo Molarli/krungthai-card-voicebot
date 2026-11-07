@@ -1,6 +1,6 @@
-# Krungthai Voice Lab
+# Krungthai Card VoiceBot
 
-Krungthai Voice Lab is an independent student prototype of a Thai and English banking voice assistant. Identity checks, card actions, delivery, and agent handoff use fictional data.
+Krungthai Card VoiceBot is an independent demo of a Thai and English voice assistant for reporting a lost debit card, blocking it, and requesting a replacement. Identity checks, card actions, delivery, and agent handoff use fictional data.
 
 ## Try the lost-card demo
 
