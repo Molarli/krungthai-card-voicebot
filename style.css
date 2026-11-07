@@ -96,6 +96,16 @@ svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width:
 .bubble { display: inline-block; padding: 9px 12px; margin: 0; border: 1px solid #dce9f1; border-radius: 4px 13px 13px 13px; background: #fff; font-size: 14px; line-height: 1.62; overflow-wrap: anywhere; white-space: pre-line; }
 .user .bubble { background: #dff5ff; border-color: #c6e9f7; border-radius: 13px 4px 13px 13px; }
 .console-bottom { padding: 12px 16px 10px; border-top: 1px solid #dce9f1; }
+.card-review { background: #fff8ed; border: 1px solid #ead3ab; border-radius: 10px; padding: 11px 12px; margin-bottom: 10px; }
+.card-review h3 { margin: 0 0 6px; font-size: 15px; }
+.review-card { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 750; margin: 0 0 5px; }
+.review-card svg { width: 17px; height: 17px; }
+.review-impact { font-size: 12px; line-height: 1.5; margin: 0 0 8px; color: #594325; }
+.review-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.review-actions button { border: 1px solid #c7ad83; border-radius: 8px; background: #fff; color: #4c3523; font-size: 12px; font-weight: 750; min-height: 38px; padding: 4px 11px; }
+.review-actions button:hover { background: #f6ead7; }
+.review-actions .confirm-block { color: #fff; background: #923322; border-color: #923322; }
+.review-actions .confirm-block:hover { background: #752617; }
 .quick-replies { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 9px; }
 .quick-replies button { border: 1px solid #9acbdf; border-radius: 20px; background: #eefaff; color: #005578; font-size: 12px; font-weight: 700; min-height: 32px; padding: 3px 10px; }
 .quick-replies button:hover { background: #d8f4ff; }

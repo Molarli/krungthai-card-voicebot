@@ -19,6 +19,8 @@
       noSpeech: 'ไม่ได้ยินเสียง ลองพูดอีกครั้งหรือพิมพ์ข้อความ',
       microphoneError: 'ใช้การรับเสียงไม่ได้ในขณะนี้ คุณยังพิมพ์ข้อความได้',
       speechError: 'เล่นเสียงตอบกลับไม่ได้ คุณยังอ่านข้อความได้',
+      reviewTitle: 'ตรวจสอบก่อนอายัดบัตร',
+      reviewImpact: 'หลังยืนยัน บัตรตัวอย่างใบนี้จะใช้ชำระเงินหรือถอนเงินไม่ได้ในระบบจำลอง คุณเลือกขอบัตรใหม่ได้ในขั้นตอนถัดไป',
       verify: 'ยืนยันตัวตนจำลอง', block: 'อายัดบัตรเดบิต', replacement: 'ขอบัตรใหม่', delivery: 'ยืนยันการจัดส่ง',
       replacement_ordered: 'ผลจำลอง · อายัดบัตรและสั่งบัตรใหม่แล้ว',
       card_blocked: 'ผลจำลอง · อายัดบัตรแล้ว',
@@ -44,6 +46,8 @@
       noSpeech: 'No speech was detected. Try again or type your message.',
       microphoneError: 'Voice input is unavailable right now. You can still type a message.',
       speechError: 'Audio playback is unavailable. The reply is in the transcript.',
+      reviewTitle: 'Review before blocking',
+      reviewImpact: 'In this simulation, blocking stops purchases and cash withdrawals on this card. You can request a replacement in the next step.',
       verify: 'Verify identity', block: 'Block debit card', replacement: 'Request replacement', delivery: 'Confirm delivery',
       replacement_ordered: 'Simulated outcome · Card blocked and replacement ordered',
       card_blocked: 'Simulated outcome · Card blocked',
@@ -55,7 +59,7 @@
   const ui = Object.fromEntries([
     'scenario-list', 'journey-steps', 'outcome', 'voice-state', 'audio', 'reset',
     'transcript', 'quick-replies', 'notice', 'composer', 'mic', 'message',
-    'try-demo', 'conversation'
+    'try-demo', 'conversation', 'card-review', 'review-title', 'review-card-label', 'review-actions'
   ].map(id => [id, document.getElementById(id)]));
   const steps = ['verify', 'block', 'replacement', 'delivery'];
   const dialogue = window.KTBDialogue.create();
@@ -216,29 +220,42 @@
   }
 
   function quickReplies(items) {
-    const container = ui['quick-replies'];
-    container.hidden = items.length === 0;
-    container.replaceChildren(...items.map(item => {
+    const review = ui['card-review'];
+    const reviewing = items.some(item => item.action === 'confirm-block');
+    const destination = reviewing ? ui['review-actions'] : ui['quick-replies'];
+    const card = window.KTBDialogue.card;
+    review.hidden = !reviewing;
+    ui['quick-replies'].hidden = reviewing || items.length === 0;
+    ui['review-actions'].replaceChildren();
+    ui['quick-replies'].replaceChildren();
+    if (reviewing) ui['review-card-label'].textContent = card.label[lang] + ' •••• ' + card.lastFour;
+    destination.append(...items.map(item => {
       const button = document.createElement('button');
       button.type = 'button';
       button.textContent = item.label;
+      if (item.action === 'confirm-block') {
+        button.className = 'confirm-block';
+        button.setAttribute('aria-describedby', 'review-card-label review-impact');
+      }
       button.addEventListener('click', () => {
-        submit(item.text, null, item.label);
-        const nextChoice = container.querySelector('button');
-        (nextChoice ?? ui.message).focus({preventScroll: true});
+        submit(item.text, null, item.label, item.action);
+        const nextFocus = ui['card-review'].hidden
+          ? ui['quick-replies'].querySelector('button') ?? ui.message
+          : ui['review-title'];
+        nextFocus.focus({preventScroll: true});
       });
       return button;
     }));
   }
 
-  function submit(text, scenarioId = null, displayText = text) {
+  function submit(text, scenarioId = null, displayText = text, action) {
     const input = text.trim();
     if (!input) return;
     voice.stopListening();
     voice.stopSpeaking();
     showNotice(null);
     ui.message.value = '';
-    const result = dialogue.reply(input, lang);
+    const result = dialogue.reply(input, lang, { action });
     const scenario = window.KTBDialogue.scenarios.find(item => item.id === result.intent);
     if (scenarioId || scenario) activeScenario = scenarioId ?? scenario.id;
     if (result.intent === 'card') {

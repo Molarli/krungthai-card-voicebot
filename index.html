@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#071e35">
   <meta name="description" content="Krungthai Card VoiceBot is an independent Thai and English demo for reporting, blocking, and replacing a lost debit card.">
   <title>Krungthai Card VoiceBot</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="dialogue.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=card-review">
+  <script src="dialogue.js?v=card-review" defer></script>
   <script src="voice.js" defer></script>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=card-review" defer></script>
 </head>
 <body>
   <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -94,6 +94,12 @@
         </header>
         <div class="transcript" id="transcript" role="log" aria-live="polite" aria-relevant="additions" tabindex="0" data-label="transcript"></div>
         <div class="console-bottom">
+          <section class="card-review" id="card-review" aria-labelledby="review-title" hidden>
+            <h3 id="review-title" tabindex="-1" data-copy="reviewTitle">ตรวจสอบก่อนอายัดบัตร</h3>
+            <p class="review-card"><svg aria-hidden="true"><use href="#i-card"/></svg><span id="review-card-label"></span></p>
+            <p class="review-impact" id="review-impact" data-copy="reviewImpact">บัตรตัวอย่างใบนี้จะใช้ชำระเงินและถอนเงินไม่ได้หลังยืนยัน คุณเลือกขอบัตรใหม่ได้ในขั้นตอนถัดไป</p>
+            <div class="review-actions" id="review-actions"></div>
+          </section>
           <div class="quick-replies" id="quick-replies" hidden></div>
           <p class="notice" id="notice" role="status" hidden></p>
           <form class="composer" id="composer">
